@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Alerts{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h4 class="mb-0">Recent Alerts</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>Port</th>
+                        <th>Severity</th>
+                        <th>Rule</th>
+                        <th>Message</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ip, port, severity, rule, message, created_at in alerts %}
+                    <tr>
+                        <td>{{ ip }}</td>
+                        <td>{{ port }}</td>
+                        <td>
+                            {% if severity in ['High', 'Critical'] %}
+                            <span class="badge bg-danger">{{ severity }}</span>
+                            {% elif severity == 'Medium' %}
+                            <span class="badge bg-warning text-dark">{{ severity }}</span>
+                            {% else %}
+                            <span class="badge bg-info">{{ severity }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ rule }}</td>
+                        <td>{{ message }}</td>
+                        <td>{{ created_at }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+// EASM Database ERD
+digraph {
+	rankdir=LR
+	hosts [label="Hosts
+    ---
+    id: INTEGER PK
+    ip: TEXT
+    port: INTEGER
+    service: TEXT
+    risk: TEXT
+    last_seen: TEXT"]
+	alerts [label="Alerts
+    ---
+    id: INTEGER PK
+    host_id: INTEGER FK
+    severity: TEXT
+    rule: TEXT
+    message: TEXT
+    created_at: TEXT"]
+	users [label="Users
+    ---
+    id: INTEGER PK
+    username: TEXT
+    password: BLOB
+    created_at: TIMESTAMP"]
+	hosts -> alerts [label=has]
+}

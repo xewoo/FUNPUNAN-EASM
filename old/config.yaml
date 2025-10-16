@@ -1,0 +1,15 @@
+telegram:
+  token: "YOUR_TELEGRAM_BOT_TOKEN"
+  chat_id: "-1001234567890"
+
+fscan_bin: "./fscan_linux_amd64"   # path to fscan binary
+nmap_args: ["-sS","-p-","-T4","--open","--reason","--max-retries","2"]
+database: "easm.db"
+scan_profiles:
+  quick:
+    nmap_flags: ["-sS","-T4","--top-ports","1000","--open"]
+    fscan_flags: ["-t","100","--top-ports","1000"]
+  deep:
+    nmap_flags: ["-sS","-p-","-T4","--open","--reason","--max-retries","2"]
+    fscan_flags: ["-t","300","-p","1-65535"]
+dedupe_window_minutes: 30

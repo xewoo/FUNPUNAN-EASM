@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Scans{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">Active Scans</h4>
+        <a href="#" class="btn btn-primary">New Scan</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Started/Last Run</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for scan in scans %}
+                    <tr>
+                        <td>{{ scan.name }}</td>
+                        <td>{{ scan.type }}</td>
+                        <td>
+                            {% if scan.status == 'running' %}
+                            <span class="badge bg-primary">Running</span>
+                            {% else %}
+                            <span class="badge bg-success">Completed</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if scan.status == 'running' %}
+                            {{ scan.started }}
+                            {% else %}
+                            {{ scan.last_run }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if scan.status == 'running' %}
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{ scan.progress }}%">
+                                    {{ scan.progress }}% (ETA: {{ scan.eta }})
+                                </div>
+                            </div>
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
