@@ -1,6 +1,6 @@
-# EASM (Enterprise Attack Surface Management)
+# FUNPUNAN-EASM
 
-A web-based security monitoring and alert system with both console and web interfaces.
+FUNPUNAN-EASM (Enterprise Attack Surface Management) is a comprehensive security monitoring and alert system that provides both web-based and console interfaces for enterprise security management.
 
 ## Features
 
