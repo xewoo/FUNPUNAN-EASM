@@ -1,47 +1,77 @@
-# Python virtual environment
+# Keep only essential files:
+# web_server.py - Main web application
+# console_ui.py - Console interface
+# init_db.py - Database initialization
+# easm.db - Main database
+# config.txt - Configuration file
+# templates/* - Web templates
+# README.md - Documentation
+# requirements.txt - Dependencies
+
+# Ignore everything
+*
+*/*
+
+# But not these files...
+!.gitignore
+!README.md
+!requirements.txt
+!web_server.py
+!console_ui.py
+!init_db.py
+!easm.db
+!config.txt
+
+# And not these folders...
+!templates/
+!templates/*.html
+
+# Python stuff to always ignore
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
 .venv/
 venv/
 ENV/
 
-# Python byte-compiled files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Distribution / packaging
-dist/
-build/
-*.egg-info/
-
-# IDE specific files
+# IDE files
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# Environment variables
-.env
-
-# Database files (keep easm.db as it's required)
+# Database temp files
 *.db-journal
 *.sqlite3
 *.sqlite3-journal
+easm.db-*
 
-# Logs
-*.log
+# Generated files
+database_*
+security_*
+*.png
+*.txt
+!requirements.txt
+!config.txt
 
-# Generated files from your visualization script
-database_statistics.png
-database_structure.txt
-security_report.txt
-security_report.html
-database_erd.png
+# Utils and test files
+check_db.py
+fix_db_permissions.py
+generate_visualizations.py
+
+# Old files
+old/
 
 # System files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Test cache
+# Debug and test files
+*.log
 .pytest_cache/
 .coverage
 htmlcov/
